@@ -1,6 +1,8 @@
 # ofxFboRecorder
 A very simple addon for making videos from a fbo.
 
+![alt text](https://github.com/vanderlin/ofxFboRecorder/blob/master/images/export.gif "Example Image")
+
 ## FFmpeg Commands
 **Make a video from a sequence**  
 `ffmpeg -framerate 60 -i frame_%d.png -crf 10 -vf 'setpts=1.0*PTS' -pix_fmt yuv420p -c:a copy -tune grain export.mov`
