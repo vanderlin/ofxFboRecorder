@@ -57,8 +57,13 @@ bool ofxFboRecorder::isRecording() {
 }
 
 //--------------------------------------------------------------
-void ofxFboRecorder::setRecording(bool doRecord) {
-    bRecord = doRecord;
+void ofxFboRecorder::start() {
+    bRecord = true;
+}
+
+//--------------------------------------------------------------
+void ofxFboRecorder::stop() {
+    bRecord = false;
 }
 
 //--------------------------------------------------------------
@@ -68,7 +73,9 @@ bool ofxFboRecorder::isDoneSavingFrames() {
 
 //--------------------------------------------------------------
 void ofxFboRecorder::toggleRecording() {
-    setRecording(!bRecord);
+    bRecord = !!bRecord;
+    if (bRecord) start();
+    else stop();
 }
 
 //--------------------------------------------------------------

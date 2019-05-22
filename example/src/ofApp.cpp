@@ -12,21 +12,23 @@ void ofApp::setup(){
     ofSetCircleResolution(200);
     
     scale = 2;
-    fbo.allocate(ofGetWidth()*scale, ofGetHeight()*scale);
+    fbo.allocate(1920*scale, 1080*scale);
     
+    recorder->start();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
     t += 0.01;
+  
     
     fbo.begin();
     ofPushMatrix();
     ofTranslate(0, 0);
     ofScale(scale, scale);
     ofClear(0);
-    ofBackground(20, 20, 20);
+    ofBackground(0);
     int k = 1000;
     float h = (fbo.getHeight()/scale);
     for(int i=0; i<k; i++) {

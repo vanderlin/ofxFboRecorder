@@ -33,7 +33,8 @@ public:
     void setRecordTime(float seconds);
     
     void setFps(int fps);
-    void setRecording(bool doRecord);
+    void stop();
+    void start();
     bool isRecording();
     bool isDoneSavingFrames();
     void toggleRecording();
