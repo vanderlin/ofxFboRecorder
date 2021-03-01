@@ -67,13 +67,18 @@ void ofxFboRecorder::stop() {
 }
 
 //--------------------------------------------------------------
+void ofxFboRecorder::resetCount() {
+    frameCount = 0;
+}
+
+//--------------------------------------------------------------
 bool ofxFboRecorder::isDoneSavingFrames() {
     return totalSaved >= totalFramesToSave;
 }
 
 //--------------------------------------------------------------
 void ofxFboRecorder::toggleRecording() {
-    bRecord = !!bRecord;
+    bRecord = !bRecord;
     if (bRecord) start();
     else stop();
 }
@@ -100,6 +105,11 @@ void ofxFboRecorder::update(ofEventArgs &e) {
 }
 
 //--------------------------------------------------------------
+float ofxFboRecorder::getPercentCompleted() {
+    return totalFramesToSave > 0 ? (float(totalSaved) / float(totalFramesToSave)) : 0;
+}
+
+//--------------------------------------------------------------
 string ofxFboRecorder::getRecordingInfo() {
     string info = "";
     
@@ -107,6 +117,7 @@ string ofxFboRecorder::getRecordingInfo() {
     info += "Total frames to save "+ofToString(totalFramesToSave) + "\n";
     info += "Current frame count " + ofToString(frameCount) + "\n";
     info += "Total frames saved " + ofToString(totalSaved) + "\n";
+    info += ofToString(getPercentCompleted()*100, 1) + "% Completed\n";
     if(bRecord) info += "Done saving frames " + ofToString(isDoneSavingFrames()) + "\n";
     return info;
 }

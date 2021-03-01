@@ -35,10 +35,11 @@ public:
     void setFps(int fps);
     void stop();
     void start();
+    void resetCount();
     bool isRecording();
     bool isDoneSavingFrames();
     void toggleRecording();
-
+    float getPercentCompleted();
     string getRecordingInfo();
      
 private:
